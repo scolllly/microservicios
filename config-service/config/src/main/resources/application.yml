@@ -1,0 +1,19 @@
+server:
+    port: 8083
+
+
+spring:
+    cloud:
+        config:
+            server:
+                git:
+                    uri: https://github.com/scolllly/microservicios.git
+                    search-paths: config-data
+                    username: scolllly
+                    password: scolly93
+                    clone-on-start:  false
+                    default-label: main
+    security:
+        user:
+            name: root
+            password: s3cr3t

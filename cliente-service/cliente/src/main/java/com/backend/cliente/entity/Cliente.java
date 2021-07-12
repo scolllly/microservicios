@@ -12,11 +12,12 @@ import org.hibernate.annotations.GeneratorType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "cliente")
 @AllArgsConstructor @Builder
-@Data
+@Data @NoArgsConstructor
 public class Cliente {
 
     @Id
