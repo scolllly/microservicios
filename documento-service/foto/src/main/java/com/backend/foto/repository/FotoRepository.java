@@ -11,5 +11,6 @@ import org.springframework.stereotype.Repository;
 public interface FotoRepository extends MongoRepository<Foto, String>{
 
     public List<Foto> findByIdCliente(Integer id);
+    public List<Foto> findByIdClienteIn(List<Integer> idLista);
     
 }

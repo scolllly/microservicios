@@ -1,8 +1,12 @@
 package com.backend.cliente.dto;
 
+import java.util.List;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import com.backend.cliente.modelo.FotoDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,5 +37,7 @@ public class ClienteRegistrarDto {
     @Min(0)
     private int edad;
     private String ciudad;
+
+    private List<FotoDto> fotos;
     
 }

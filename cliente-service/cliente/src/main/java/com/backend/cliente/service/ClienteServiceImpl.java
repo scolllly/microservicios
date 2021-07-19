@@ -2,6 +2,7 @@ package com.backend.cliente.service;
 
 import java.util.List;
 
+import com.backend.cliente.client.FotoClient;
 import com.backend.cliente.entity.Cliente;
 import com.backend.cliente.repository.ClienteRepository;
 

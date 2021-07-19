@@ -1,13 +1,16 @@
 package com.backend.cliente.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import com.backend.cliente.client.FotoClient;
 import com.backend.cliente.converter.ClienteConverter;
 import com.backend.cliente.dto.ClienteDto;
 import com.backend.cliente.dto.ClienteRegistrarDto;
 import com.backend.cliente.entity.Cliente;
+import com.backend.cliente.modelo.FotoDto;
 import com.backend.cliente.service.ClienteService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +33,33 @@ public class ClienteController {
     @Autowired
     private ClienteConverter clienteConverter;
 
+    @Autowired
+    private FotoClient fotoClient;
+
     @GetMapping
     public ResponseEntity< List<ClienteDto>> readAll() throws Exception{
         List<Cliente> clienteLista = clienteService.readAll();
         List<ClienteDto> clienteDtoLista =  clienteConverter.convertirEntityToDto(clienteLista);
+
+
+        List<FotoDto> fotoLista = new ArrayList<>();
+        // List<Integer> idClienteLista = new ArrayList<>();
+
+        if(!clienteDtoLista.isEmpty()){
+
+            clienteDtoLista.stream().forEach(clienteDto -> {
+
+                try{
+                    clienteDto.setFotos(fotoClient.readAll(clienteDto.getId()).getBody());
+
+                }catch(Exception e){
+                    // return e;    
+                }
+                
+                // idClienteLista.add(cliente.getId()); 
+
+            });
+        }
 
         return new ResponseEntity<List<ClienteDto>>(clienteDtoLista , HttpStatus.OK);
     }

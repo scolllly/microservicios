@@ -12,5 +12,6 @@ public interface FotoService {
     public void deleteById(String id) throws Exception;
 
     public List<Foto> findByIDCliente(Integer id) throws Exception;
+    public List<Foto> findByIDClienteIn(List<Integer> idLista) throws Exception;
     
 }

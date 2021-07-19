@@ -75,5 +75,15 @@ public class FotoServiceImpl implements FotoService {
            throw e;
        }
     }
+
+    @Override
+    public List<Foto> findByIDClienteIn(List<Integer> idLista) throws Exception {
+        try{
+            return fotoRepository.findByIdClienteIn(idLista);    
+       }
+       catch(Exception e){
+           throw e;
+       }
+    }
     
 }
